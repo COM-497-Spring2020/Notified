@@ -1,2 +1,1 @@
-# Notified
-Our Desktop Notification App
+# NotifiedGroup 2: Our Desktop Notification App
