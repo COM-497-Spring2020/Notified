@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+   <bottom>
+      <AnchorPane prefHeight="300.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="28.0" layoutY="188.0" mnemonicParsing="false" onAction="#CreateReminder" prefHeight="64.0" prefWidth="154.0" text="Make a reminder" textFill="#d5853f">
+               <font>
+                  <Font name="Bauhaus 93" size="14.0" />
+               </font></Button>
+            <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="122.0" layoutY="29.0" text="Notified!!" textFill="#2c9c6a">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="60.0" />
+               </font></Label>
+            <Button layoutX="313.0" layoutY="188.0" mnemonicParsing="false" onAction="#NewsFeed" prefHeight="64.0" prefWidth="154.0" text="News Feed!!" textFill="#d5853f">
+               <font>
+                  <Font name="Bauhaus 93" size="14.0" />
+               </font>
+            </Button>
+            <Text fill="#4ecf4c" layoutX="106.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brought to you by Andrea, Ashley, and Kanokwan">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>
