@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="300.0" prefWidth="500.0" styleClass="shape-background2" stylesheets="@application.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller2">
+   <children>
+      <Button layoutX="292.0" layoutY="247.0" mnemonicParsing="false" styleClass="button2" text="Next" />
+      <Label layoutX="91.0" layoutY="48.0" text="Preview &amp; Decoration " textFill="#7f2477">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Button layoutX="187.0" layoutY="247.0" mnemonicParsing="false" onAction="#BackToRe1" prefHeight="14.0" prefWidth="41.0" styleClass="button2" text="Back" />
+      <Label fx:id="display" layoutX="137.0" layoutY="108.0" prefHeight="75.0" prefWidth="196.0" text="Label" />
+   </children>
+   <effect>
+      <DropShadow height="15.0" radius="4.5" spread="0.9" width="5.0">
+         <color>
+            <Color red="0.6229066848754883" green="0.38339999318122864" blue="0.7099999785423279" opacity="0.8235294222831726" />
+         </color>
+      </DropShadow>
+   </effect>
+</AnchorPane>

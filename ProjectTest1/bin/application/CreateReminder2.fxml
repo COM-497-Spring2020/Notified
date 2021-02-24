@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<AnchorPane prefHeight="300.0" prefWidth="500.0" styleClass="shape-background2" stylesheets="@application.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <effect>
+      <DropShadow height="135.39" radius="61.2375" spread="0.35" width="111.56">
+         <color>
+            <Color red="0.19643762707710266" green="0.41868844628334045" blue="0.6131578683853149" opacity="0.7099999785423279" />
+         </color>
+      </DropShadow>
+   </effect>
 </AnchorPane>
-

@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1">
+<AnchorPane accessibleRole="NODE" focusTraversable="true" pickOnBounds="false" prefHeight="300.0" prefWidth="500.0" styleClass="shape-background2" stylesheets="@application.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
-      <Label layoutX="136.0" layoutY="28.0" text="News Feed!!" textFill="#2ac59e">
+      <Label alignment="CENTER" layoutX="136.0" layoutY="41.0" text="News Feed!!" textFill="#34a788">
          <font>
             <Font name="System Bold" size="40.0" />
          </font>
       </Label>
+      <Button layoutX="193.0" layoutY="220.0" mnemonicParsing="false" onAction="#BackToMain" styleClass="button2" stylesheets="@application.css" text="Back to Main Page" />
    </children>
+   <effect>
+      <DropShadow height="10.0" radius="3.25" spread="0.9" width="5.0">
+         <color>
+            <Color red="0.365200012922287" green="0.5666133165359497" blue="0.8299999833106995" opacity="0.8166089653968811" />
+         </color>
+      </DropShadow>
+   </effect>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
 </AnchorPane>

@@ -1,1 +1,44 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+/**{
+	-fx-base: #FFF8DC;
+}*/
+
+.root {
+    -fx-background-color: transparent;
+}
+
+.shape-background1{
+	-fx-shape: "M150 0 L75 200 L225 200 Z";
+	-fx-background-color: transparent;
+}
+
+.shape-background2{
+	-fx-shape: "M 70 90 A 40 50 0 1 1 160 80 A 50
+	 50 0 1 1 250 80 A 50 50 0 1 1 410 90 A 50 50 
+	 0 1 1 470 190 A 50 50 0 1 1 370 200 A 50 50 0 1 1 
+	 270 260 A 50 50 0 1 1 160 220 A 50 50 0 1 1 60 210 
+	 A 50 50 0 1 1 70 90 Z";
+	-fx-background-color: #b3d9ff;
+
+}
+
+.button1{
+	/*-fx-font-size: 14pt;*/
+	-fx-text-fill: white;
+	-fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);
+	-fx-background-color: #7FFFD4;
+}
+
+.button2{
+	/*-fx-font-size: 14pt;*/
+	-fx-text-fill: white;
+	-fx-effect: dropshadow(three-pass-box, white, 10, 0, 0, 0);
+	-fx-background-color: #4d88ff;
+}
+
+
+.first-button{
+	
+	-fx-shape: "M150 0 L75 200 L225 200 Z";
+	-fx-background-color: #7FFFD4;
+}
