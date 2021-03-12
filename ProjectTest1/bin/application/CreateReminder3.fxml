@@ -1,27 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="500.0" styleClass="shape-background2" stylesheets="@application.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller2">
+<AnchorPane centerShape="false" prefHeight="300.0" prefWidth="500.0" styleClass="shape-background3" stylesheets="@application.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller2">
    <children>
-      <Button layoutX="292.0" layoutY="247.0" mnemonicParsing="false" styleClass="button2" text="Next" />
-      <Label layoutX="91.0" layoutY="48.0" text="Preview &amp; Decoration " textFill="#7f2477">
+      <Button layoutX="294.0" layoutY="237.0" mnemonicParsing="false" styleClass="button3" text="Save" />
+      <Label layoutX="205.0" layoutY="48.0" text="Alert" textFill="#a33194">
          <font>
-            <Font name="System Bold" size="30.0" />
+            <Font name="Arial Rounded MT Bold" size="38.0" />
          </font>
       </Label>
-      <Button layoutX="187.0" layoutY="247.0" mnemonicParsing="false" onAction="#BackToRe1" prefHeight="14.0" prefWidth="41.0" styleClass="button2" text="Back" />
-      <Label fx:id="display" layoutX="137.0" layoutY="108.0" prefHeight="75.0" prefWidth="196.0" text="Label" />
+      <Button layoutX="176.0" layoutY="237.0" mnemonicParsing="false" onAction="#BackToRe2" prefHeight="28.0" prefWidth="55.0" styleClass="button3" text="Back" />
+      <Button layoutX="424.0" layoutY="85.0" mnemonicParsing="false" onAction="#CloseApp" prefHeight="0.0" prefWidth="26.0" styleClass="button1" text="X">
+          <font>
+               <Font size="13.0" />
+          </font>
+      </Button>
+      <GridPane layoutX="120.0" layoutY="92.0" prefHeight="128.0" prefWidth="260.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="136.20001220703125" minWidth="10.0" prefWidth="91.0000244140625" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.20001220703125" minWidth="10.0" prefWidth="190.1999755859375" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Start" textFill="#6d4fb2">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label text="Alert" textFill="#6d4fb2" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Repeat" textFill="#6d4fb2" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label text="End" textFill="#6d4fb2" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField prefHeight="26.0" prefWidth="149.0" promptText="Starting Time" GridPane.columnIndex="1" />
+            <TextField promptText="Ending Time" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
    </children>
    <effect>
-      <DropShadow height="15.0" radius="4.5" spread="0.9" width="5.0">
+      <DropShadow height="15.0" radius="3.25" spread="1.0" width="0.0">
          <color>
-            <Color red="0.6229066848754883" green="0.38339999318122864" blue="0.7099999785423279" opacity="0.8235294222831726" />
+            <Color red="0.7137255072593689" green="0.4941176474094391" blue="0.7803921699523926" opacity="0.8199999928474426" />
          </color>
       </DropShadow>
    </effect>

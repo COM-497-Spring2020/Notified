@@ -9,7 +9,7 @@
 
 .shape-background1{
 	-fx-shape: "M150 0 L75 200 L225 200 Z";
-	-fx-background-color: transparent;
+	-fx-background-color: pink;
 }
 
 .shape-background2{
@@ -22,23 +22,52 @@
 
 }
 
+.shape-background3{
+	-fx-shape: "M 70 90 A 40 50 0 1 1 160 80 A 50
+	 50 0 1 1 250 80 A 50 50 0 1 1 410 90 A 50 50 
+	 0 1 1 470 190 A 50 50 0 1 1 370 200 A 50 50 0 1 1 
+	 270 260 A 50 50 0 1 1 160 220 A 50 50 0 1 1 60 210 
+	 A 50 50 0 1 1 70 90 Z";
+	-fx-background-color: #ffb3da;
+
+}
+
 .button1{
-	/*-fx-font-size: 14pt;*/
+	-fx-font-size: 14px;
+	-fx-font-family: "Bauhaus 93";
 	-fx-text-fill: white;
-	-fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);
-	-fx-background-color: #7FFFD4;
+	-fx-effect: dropshadow(three-pass-box, white, 5, 0, 0, 0);
+	-fx-background-color: #ff6666;
 }
 
 .button2{
-	/*-fx-font-size: 14pt;*/
+	-fx-font-size: 14px;
+	-fx-font-family: "Bauhaus 93";
 	-fx-text-fill: white;
-	-fx-effect: dropshadow(three-pass-box, white, 10, 0, 0, 0);
+	-fx-effect: dropshadow(three-pass-box, white, 5, 0, 0, 0);
 	-fx-background-color: #4d88ff;
 }
 
+.button3{
+	-fx-font-size: 14px;
+	-fx-font-family: "Bauhaus 93";
+	-fx-text-fill: white;
+	-fx-effect: dropshadow(three-pass-box, white, 5, 0, 0, 0);
+	-fx-background-color: #bf407d;
+}
 
-.first-button{
-	
-	-fx-shape: "M150 0 L75 200 L225 200 Z";
-	-fx-background-color: #7FFFD4;
+.button4{
+	-fx-font-size: 14px;
+	-fx-font-family: "Bauhaus 93";
+	-fx-text-fill: white;
+	-fx-effect: dropshadow(three-pass-box, white, 5, 0, 0, 0);
+	-fx-background-color: #e6b800;
+}
+
+.label-background1{
+	-fx-font-size: 16px;
+	-fx-text-fill: #6d4fb2;
+	-fx-font-family: "Bodoni MT";
+	/*-fx-effect: dropshadow(three-pass-box, white, 10, 0, 0, 0);*/
+	-fx-background-color: white;
 }

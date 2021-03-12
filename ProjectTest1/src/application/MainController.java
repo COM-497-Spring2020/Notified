@@ -1,7 +1,10 @@
 package application;
 
+
+
 import java.util.Properties;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,12 +28,20 @@ public class MainController {
 	private TextField comments;
 	@FXML
 	private Label display;
+	@FXML
+	private Label username;
 //	@FXML
 //	private Label displayDate;
 //	@FXML
 //	private Label displayLocation;
 //	@FXML
 //	private Label displayComments;
+	
+	public void SetText() {
+		SignInController login = new SignInController();
+		String info = login.getUserName();
+		username.setText(info);
+	}
 	
 	public void CreateReminder (ActionEvent event) throws Exception{
 		((Node)event.getSource()).getScene().getWindow().hide();
@@ -54,14 +65,14 @@ public class MainController {
 			primaryStage.setScene(scene);
 			primaryStage.show();}
 	
-	public void NextToDeco(ActionEvent event) throws Exception{
+	public void NextToRe2(ActionEvent event) throws Exception{
 		((Node)event.getSource()).getScene().getWindow().hide();
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/CreateReminder3.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/CreateReminder2.fxml"));
 		Parent root = loader.load();
 		Controller2 show = (Controller2)loader.getController();
 		show.displayText(name.getText() + "\n" + date.getText() + "\n" + place.getText() + "\n" + comments.getText());
 		Stage primaryStage = new Stage();
-			//Parent root = FXMLLoader.load(getClass().getResource("/application/CreateReminder3.fxml"));
+			//Parent root = FXMLLoader.load(getClass().getResource("/application/CreateReminder2.fxml"));
 			Scene scene = new Scene(root,500,300);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			scene.setFill(Color.TRANSPARENT);
@@ -94,5 +105,20 @@ public class MainController {
 			primaryStage.initStyle(StageStyle.TRANSPARENT);
 			primaryStage.setScene(scene);
 			primaryStage.show();}
+	
+	public void SignOut(ActionEvent event) throws Exception{
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage primaryStage = new Stage();
+			Parent root = FXMLLoader.load(getClass().getResource("/application/SignIn.fxml"));
+			Scene scene = new Scene(root,500,300);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			scene.setFill(Color.TRANSPARENT);
+			primaryStage.initStyle(StageStyle.TRANSPARENT);
+			primaryStage.setScene(scene);
+			primaryStage.show();}
+	
+	public void CloseApp(ActionEvent event) throws Exception{
+		Platform.exit();
+		System.exit(0);}
 		
 }

@@ -1,5 +1,6 @@
 package application;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,4 +30,30 @@ public class Controller2 {
 			primaryStage.initStyle(StageStyle.TRANSPARENT);
 			primaryStage.setScene(scene);
 			primaryStage.show();}
+	
+	public void BackToRe2(ActionEvent event) throws Exception{
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage primaryStage = new Stage();
+			Parent root = FXMLLoader.load(getClass().getResource("/application/CreateReminder2.fxml"));
+			Scene scene = new Scene(root,500,300);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			scene.setFill(Color.TRANSPARENT);
+			primaryStage.initStyle(StageStyle.TRANSPARENT);
+			primaryStage.setScene(scene);
+			primaryStage.show();}
+	
+	public void NextToRe3(ActionEvent event) throws Exception{
+		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage primaryStage = new Stage();
+			Parent root = FXMLLoader.load(getClass().getResource("/application/CreateReminder3.fxml"));
+			Scene scene = new Scene(root,500,300);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			scene.setFill(Color.TRANSPARENT);
+			primaryStage.initStyle(StageStyle.TRANSPARENT);
+			primaryStage.setScene(scene);
+			primaryStage.show();}
+	
+	public void CloseApp(ActionEvent event) throws Exception{
+		Platform.exit();
+		System.exit(0);}
 }

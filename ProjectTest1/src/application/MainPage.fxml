@@ -11,29 +11,49 @@
 
 <BorderPane focusTraversable="true" styleClass="root" stylesheets="@application.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <center>
-      <AnchorPane prefHeight="300.0" prefWidth="500.0" styleClass="shape-background2" stylesheets="@application.css" BorderPane.alignment="CENTER">
+      <AnchorPane centerShape="false" prefHeight="300.0" prefWidth="500.0" styleClass="shape-background2" stylesheets="@application.css" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="62.0" layoutY="176.0" mnemonicParsing="false" onAction="#CreateReminder" prefHeight="28.0" prefWidth="128.0" styleClass="button2" text="Make a reminder" textFill="#d5853f">
+            <Button layoutX="83.0" layoutY="187.0" mnemonicParsing="false" onAction="#CreateReminder" prefHeight="28.0" prefWidth="128.0" styleClass="button2" text="Make a reminder" textFill="#d5853f">
                <font>
                   <Font name="Bauhaus 93" size="14.0" />
                </font></Button>
-            <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="115.0" layoutY="46.0" text="Notified!!" textFill="#2c9c6a">
+            <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="116.0" layoutY="46.0" text="Notified!!" textFill="#2c9c6a">
                <font>
                   <Font name="Arial Rounded MT Bold" size="60.0" />
                </font></Label>
-            <Button layoutX="321.0" layoutY="176.0" mnemonicParsing="false" onAction="#NewsFeed" prefHeight="28.0" prefWidth="126.0" styleClass="button2" text="News Feed!!" textFill="#d5853f">
+            <Button layoutX="297.0" layoutY="187.0" mnemonicParsing="false" onAction="#NewsFeed" prefHeight="28.0" prefWidth="126.0" styleClass="button2" text="News Feed!!" textFill="#d5853f">
                <font>
                   <Font name="Bauhaus 93" size="14.0" />
                </font>
             </Button>
-            <Text fill="#baaa63" layoutX="105.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brought to you by Andrea, Ashley, and Kanokwan">
+            <Text fill="#baaa63" layoutX="105.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brought to you by Andrea, Ashley, and Kanokwan">
                <font>
                   <Font name="Arial Rounded MT Bold" size="12.0" />
                </font>
             </Text>
+            <Button layoutX="424.0" layoutY="85.0" mnemonicParsing="false" onAction="#CloseApp" prefHeight="0.0" prefWidth="26.0" styleClass="button1" text="X">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="93.0" layoutY="128.0" text="Welcome!!" textFill="#1a2fc7">
+               <font>
+                  <Font name="Harlow Solid Italic" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="username" layoutX="211.0" layoutY="128.0" prefHeight="43.0" prefWidth="239.0" text="Username" textFill="#1a2fc7">
+               <font>
+                  <Font name="Harlow Solid Italic" size="25.0" />
+               </font>
+            </Label>
+            <Button layoutX="207.0" layoutY="225.0" mnemonicParsing="false" onAction="#SignOut" prefHeight="28.0" prefWidth="86.0" styleClass="button1" text="Sign Out" textFill="#d5853f">
+               <font>
+                  <Font name="Bauhaus 93" size="14.0" />
+               </font>
+            </Button>
          </children>
          <effect>
-            <DropShadow height="10.0" radius="3.25" spread="0.9" width="5.0">
+            <DropShadow height="15.0" radius="3.25" spread="1.0" width="0.0">
                <color>
                   <Color red="0.09436159580945969" green="0.7605262994766235" blue="0.3941357135772705" />
                </color>
