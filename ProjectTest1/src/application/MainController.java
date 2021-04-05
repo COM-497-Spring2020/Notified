@@ -2,6 +2,7 @@ package application;
 
 
 
+import java.util.List;
 import java.util.Properties;
 
 import javafx.application.Platform;
@@ -12,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -30,12 +32,6 @@ public class MainController {
 	private Label display;
 	@FXML
 	private Label username;
-//	@FXML
-//	private Label displayDate;
-//	@FXML
-//	private Label displayLocation;
-//	@FXML
-//	private Label displayComments;
 	
 	public void SetText() {
 		SignInController login = new SignInController();
@@ -53,6 +49,23 @@ public class MainController {
 			primaryStage.initStyle(StageStyle.TRANSPARENT);
 			primaryStage.setScene(scene);
 			primaryStage.show();}
+	
+	public void ReviewReminder (ActionEvent event) throws Exception{
+		((Node)event.getSource()).getScene().getWindow().hide();
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/ReviewReminder.fxml"));
+		Parent root = loader.load();
+		// switch to ReviewReminderController
+		ReviewReminderController review = (ReviewReminderController) loader.getController();
+		review.initialize();
+		Stage primaryStage = new Stage();
+//			Parent root = FXMLLoader.load(getClass().getResource("/application/ReviewReminder.fxml"));
+			Scene scene = new Scene(root,500,300);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			scene.setFill(Color.TRANSPARENT);
+			primaryStage.initStyle(StageStyle.TRANSPARENT);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+	}
 			
 	public void NewsFeed(ActionEvent event) throws Exception{
 		((Node)event.getSource()).getScene().getWindow().hide();
@@ -80,8 +93,13 @@ public class MainController {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		
-		Reminder reminder = new Reminder(name.getText(), date.getText(), place.getText(),comments.getText());
+//		Reminder reminder = new Reminder(name.getText(), date.getText(), place.getText(),comments.getText());
+//		Reminder.main();	
+		
+		SignInController id = new SignInController();
+		Reminder reminder = new Reminder(name.getText(), date.getText(), place.getText(),comments.getText(), id.getUserID());
 		Reminder.main();	
+		
 	}
 	
 	/*public void BackToRe1(ActionEvent event) throws Exception{
@@ -104,7 +122,8 @@ public class MainController {
 			scene.setFill(Color.TRANSPARENT);
 			primaryStage.initStyle(StageStyle.TRANSPARENT);
 			primaryStage.setScene(scene);
-			primaryStage.show();}
+			primaryStage.show();
+	}
 	
 	public void SignOut(ActionEvent event) throws Exception{
 		((Node)event.getSource()).getScene().getWindow().hide();

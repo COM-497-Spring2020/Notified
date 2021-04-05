@@ -1,51 +1,43 @@
 package application;
 
-//mongodb imports
-import org.bson.Document;
-
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.List;
+
+//mongodb imports
+import org.bson.Document;
 
 import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.DBCursor;
-import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Projections;
 
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Label;
-import javafx.scene.paint.Color;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class SignInController {
 	public String email;
 	public String hashedPassword;
-	public String who;
 	public static String username;
+	public static String userID;
+	public static List<ViewReminder> view = new ArrayList<ViewReminder>();
 	@FXML
 	private TextField emailField;
 	@FXML
@@ -98,13 +90,8 @@ public class SignInController {
 					alert.show();
 					return;
 				}
-				
-				// This is where I want to check the database at login
-				// hopefully an if else
-				// if this email exists, go to -> if the password is correct, login alert success!, else incorrect password alert
-				// else alert that email isn't registered, send user to register
 	
-				
+				// Check database at login to see if the user exists
 				MongoClientURI uri = new MongoClientURI(
 					    //"mongodb+srv://andrea:45A7GP6sO0xm82bC@cluster0.yuj3e.mongodb.net/Register?retryWrites=true&w=majority");
 							  "mongodb+srv://notifiedDB:1yNObuHirguaJytk@notified.0jtvj.mongodb.net/Notified?retryWrites=true&w=majority");
@@ -164,8 +151,15 @@ public class SignInController {
 								FindIterable<Document> find = coll.find(search).projection(Projections.include("Name"));
 								for (Document name : find) {
 									username = (String) name.get("Name");
-									show.SetText();
+									show.SetText();									
 								}
+								
+								// stores the userID
+								FindIterable<Document> id = coll.find(search).projection(Projections.include("UserID"));
+								for (Document user : id) { 
+									userID = (String) user.get("UserID");
+								}
+								
 						// if the password is incorrect -> try again
 						} else {
 							Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -183,31 +177,38 @@ public class SignInController {
 					alert.setContentText("User does not exist. Please register.");
 //					alert.initOwner(pane.getScene().getWindow());
 					alert.show();
-				}
-				
-				/*			
-				if(db.Login.find({ "email."+emailField.getText() , { "$exists", true }})) {
-					Alert alert = new Alert(Alert.AlertType.ERROR);
-					alert.setTitle("");
-					alert.setHeaderText(null);
-					alert.setContentText("");
-					alert.initOwner(pane.getScene().getWindow());
-					alert.show();
-					return;
-				}
-				 */
-				
-	//			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-	//			alert.setTitle("Signed In");
-	//			alert.setHeaderText(null);
-	//			alert.setContentText("Info recieved");
-	//			alert.initOwner(pane.getScene().getWindow());
-	//			alert.show();
-				
+				}				
 			}
 		
 		public String getUserName() {
 			return username;
+		}
+		
+		public String getUserID() {
+			return userID.toString();
+		}
+		
+		// Adds all of a users reminders to a list
+		public List<ViewReminder> viewNotifs() {
+			MongoClientURI uri = new MongoClientURI(
+					  "mongodb+srv://notifiedDB:1yNObuHirguaJytk@notified.0jtvj.mongodb.net/Notified?retryWrites=true&w=majority");
+					MongoClient mongoClient = new MongoClient(uri);
+					MongoDatabase database = mongoClient.getDatabase("Notified");
+			
+			// searches for all reminders associated with a specific userID
+			MongoCollection<Document> coll = (MongoCollection<Document>) database.getCollection("Notifications");			
+			BasicDBObject search = new BasicDBObject().append("UserID", userID);
+			FindIterable<Document> result = coll.find(search);
+			
+			for (Document list : result) {
+				ViewReminder v = new ViewReminder();
+				// sends the information to the ViewReminder model class, which will then be displayed
+				// in a table view on ReviewReminderController
+				v.setReminder(list.get("EventName") + "\n" + (String) list.get("Date") + "\n" + (String) list.get("Location") + "\n" + (String) list.get("Comments") + "\n");
+				// adds all reminders for the user to a list
+				view.add(v);
+			}
+			return view;
 		}
 		
 		// Event Listener on Button.onAction
