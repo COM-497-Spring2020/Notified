@@ -10,13 +10,14 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.types.ObjectId;
 
 public class Reminder {
-	static String NotifTitle; static String NotifDate; static String NotifLocation; static String NotifComments;
+	static String NotifTitle; static String NotifDate; static String NotifLocation; static String NotifComments; static String UserID;
 	//create notification object
-	public Reminder(String name, String date, String location, String comments) {		
+	public Reminder(String name, String date, String location, String comments, String id) {		
 		NotifTitle = name;
 		NotifDate = date;
 		NotifLocation = location;
 		NotifComments = comments;
+		UserID = id;
 		}
 	
 	public static void main() {
@@ -33,6 +34,7 @@ public class Reminder {
 		// create document
 		Document document = new Document();
 		//Reminder myReminder = new Reminder(NotifTitle, NotifDate, NotifLocation, NotifComments);
+		document.append("UserID", UserID);
 		document.append("EventName", NotifTitle);
 		document.append("Date", NotifDate);
 		document.append("Location", NotifLocation);
