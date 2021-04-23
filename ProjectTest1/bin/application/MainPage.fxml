@@ -13,20 +13,20 @@
    <center>
       <AnchorPane centerShape="false" prefHeight="300.0" prefWidth="500.0" styleClass="shape-background2" stylesheets="@application.css" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="83.0" layoutY="187.0" mnemonicParsing="false" onAction="#CreateReminder" prefHeight="28.0" prefWidth="128.0" styleClass="button2" text="Make a reminder" textFill="#d5853f">
+            <Button layoutX="80.0" layoutY="157.0" mnemonicParsing="false" onAction="#CreateReminder" prefHeight="28.0" prefWidth="128.0" styleClass="button2" text="Make a reminder" textFill="#d5853f">
                <font>
                   <Font name="Bauhaus 93" size="14.0" />
                </font></Button>
-            <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="116.0" layoutY="46.0" text="Notified!!" textFill="#2c9c6a">
+            <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="138.0" layoutY="46.0" text="Notified!!" textFill="#2c9c6a">
                <font>
-                  <Font name="Arial Rounded MT Bold" size="60.0" />
+                  <Font name="Arial Rounded MT Bold" size="50.0" />
                </font></Label>
-            <Button layoutX="297.0" layoutY="187.0" mnemonicParsing="false" onAction="#NewsFeed" prefHeight="28.0" prefWidth="126.0" styleClass="button2" text="News Feed!!" textFill="#d5853f">
+            <Button layoutX="292.0" layoutY="157.0" mnemonicParsing="false" onAction="#NewsFeed" prefHeight="28.0" prefWidth="126.0" styleClass="button2" text="News Feed!!" textFill="#d5853f">
                <font>
                   <Font name="Bauhaus 93" size="14.0" />
                </font>
             </Button>
-            <Text fill="#baaa63" layoutX="105.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brought to you by Andrea, Ashley, and Kanokwan">
+            <Text fill="#baaa63" layoutX="106.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brought to you by Andrea, Ashley, and Kanokwan">
                <font>
                   <Font name="Arial Rounded MT Bold" size="12.0" />
                </font>
@@ -36,17 +36,22 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Label layoutX="93.0" layoutY="128.0" text="Welcome!!" textFill="#1a2fc7">
+            <Label layoutX="90.0" layoutY="111.0" text="Welcome!!" textFill="#1a2fc7">
                <font>
                   <Font name="Harlow Solid Italic" size="25.0" />
                </font>
             </Label>
-            <Label fx:id="username" layoutX="211.0" layoutY="128.0" prefHeight="43.0" prefWidth="239.0" text="Username" textFill="#1a2fc7">
+            <Label fx:id="username" layoutX="211.0" layoutY="111.0" prefHeight="43.0" prefWidth="239.0" text="Username" textFill="#1a2fc7">
                <font>
                   <Font name="Harlow Solid Italic" size="25.0" />
                </font>
             </Label>
-            <Button layoutX="207.0" layoutY="225.0" mnemonicParsing="false" onAction="#SignOut" prefHeight="28.0" prefWidth="86.0" styleClass="button1" text="Sign Out" textFill="#d5853f">
+            <Button layoutX="206.0" layoutY="225.0" mnemonicParsing="false" onAction="#SignOut" prefHeight="28.0" prefWidth="86.0" styleClass="button1" text="Sign Out" textFill="#d5853f">
+               <font>
+                  <Font name="Bauhaus 93" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="178.0" layoutY="191.0" mnemonicParsing="false" onAction="#ReviewReminder" prefHeight="28.0" prefWidth="142.0" styleClass="button4" text="Review Reminders" textFill="#d5853f">
                <font>
                   <Font name="Bauhaus 93" size="14.0" />
                </font>

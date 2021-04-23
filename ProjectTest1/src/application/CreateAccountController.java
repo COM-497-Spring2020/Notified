@@ -3,14 +3,20 @@ package application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -38,11 +44,14 @@ import javafx.scene.control.PasswordField;
 
 public class CreateAccountController {
 	@FXML
+    private AnchorPane rootPane;
+	@FXML
 	private TextField nameField;
 	@FXML
 	private TextField emailField;
 	@FXML
 	private PasswordField passwordField;
+	public static UUID userID;
 	
 //	private Node pane;
 	public void start(Stage primaryStage) throws Exception {
@@ -51,24 +60,35 @@ public class CreateAccountController {
 		   //================================ setting up MongoDB Connection ==================================================
 		   //=================================================================================================================
 		  MongoClientURI uri = new MongoClientURI(
-	    	//"mongodb+srv://andrea:45A7GP6sO0xm82bC@cluster0.yuj3e.mongodb.net/Register?retryWrites=true&w=majority");
-				  "mongodb+srv://notifiedDB:1yNObuHirguaJytk@notified.0jtvj.mongodb.net/Notified?retryWrites=true&w=majority");
+			 "mongodb+srv://notifiedDB:1yNObuHirguaJytk@notified.0jtvj.mongodb.net/Notified?retryWrites=true&w=majority");
 		   MongoClient mongoClient = new MongoClient(uri);
 		   MongoDatabase database = mongoClient.getDatabase("Notified");
 		   
 		   Document document = new Document();}
+	
+	//this is the method to access the create user part of the api
+	public void createUser(String user, String pass) throws IOException, InterruptedException {
+
+		HttpClient client = HttpClient.newHttpClient();
+		HttpRequest request = HttpRequest.newBuilder(URI.create("http://67.78.159.98:9991/api/v1/create/"+user+"/"+pass+"/")).header("accept", "application/json").build();
+		var response = client.send(request, BodyHandlers.ofString());
+		String token = response.body(); 
+		System.out.println(response.statusCode());
+		System.out.println(token);
+	}
 
 	// Event Listener on Button.onAction
 	@FXML
 	public void SignUp(ActionEvent event) throws Exception {
-		   	// maybe check if the name is already taken? like the user already exists
-		   
+		ServerSessionModel sessionModel = new ServerSessionModel();
+		ServerSessionController sessionController = new ServerSessionController(sessionModel);
+		
 			MongoClientURI uri = new MongoClientURI(
-			    	//"mongodb+srv://andrea:45A7GP6sO0xm82bC@cluster0.yuj3e.mongodb.net/Register?retryWrites=true&w=majority");
-						  "mongodb+srv://notifiedDB:1yNObuHirguaJytk@notified.0jtvj.mongodb.net/Notified?retryWrites=true&w=majority");
+					 "mongodb+srv://notifiedDB:1yNObuHirguaJytk@notified.0jtvj.mongodb.net/Notified?retryWrites=true&w=majority");
 				   MongoClient mongoClient = new MongoClient(uri);
 				   MongoDatabase database = mongoClient.getDatabase("Notified");
 				   Document document = new Document();
+				   
 		    // checks for documents containing the name entered
 		    MongoCollection<Document> collec = database.getCollection("Login");
 	        long name = collec.countDocuments(Filters.and(Filters.eq("Name", nameField.getText())));
@@ -92,7 +112,6 @@ public class CreateAccountController {
 				alert.show();
 				return;
 			} 
-			// ideally i would also like to check if the email is valid format
 			if(!emailField.getText().isEmpty()) {
 				String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
 				Pattern pattern = Pattern.compile(regex);
@@ -127,6 +146,9 @@ public class CreateAccountController {
 				return;
 			}
 			
+			// a controller to save tne username
+			sessionController.setUsername(nameField.getText());
+			
 			// hash the password before adding to database
 			String password = passwordField.getText();
 			String hashedPassword = null;
@@ -140,15 +162,28 @@ public class CreateAccountController {
 	                sb.append(Integer.toString((digest[i] & 0xff) + 0x100, 16).substring(1));
 	            }
 	            hashedPassword = sb.toString();
+	            sessionController.setPassword(sb.toString());
+	            //tried running it in here too
+	            //createUser(sessionController.getUsername(), hashedPassword);
 			} catch (NoSuchAlgorithmException e) {
 				e.printStackTrace();
-			} 
+			}
+			// a controller to put session as false = not logged in
+			sessionController.setSessionValid(false);
+			
+			// create a unique user id
+			userID = UUID.randomUUID();
 							
 			// appending the value retrieved at pressing the button
 			document.append("Name", nameField.getText());
 			document.append("Email", emailField.getText());
 			document.append("Password", hashedPassword);
+			document.append("UserID", userID.toString());
 			//document.append("Password", passField.getText());
+			createUser(nameField.getText(), hashedPassword);
+			
+			// tried to call the class and run the method 
+			//ServerSessionActions.createUser(nameField.getText(), hashedPassword);
 			
 			Document found = database.getCollection("Login").find(document).first();
 			
@@ -180,29 +215,19 @@ public class CreateAccountController {
 ////			    	 primaryStage.setScene(scene);
 //			     }
 //			});
-			((Node)event.getSource()).getScene().getWindow().hide();
-			Stage primaryStage = new Stage();
-				Parent root = FXMLLoader.load(getClass().getResource("/application/SignIn.fxml"));
-				Scene scene = new Scene(root,500,300);
-				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-				scene.setFill(Color.TRANSPARENT);
-				primaryStage.initStyle(StageStyle.TRANSPARENT);
-				primaryStage.setScene(scene);
-				primaryStage.show();
-		}
-	   ;	
+
+			AnchorPane pane = FXMLLoader.load(getClass().getResource("/application/NewSignIn.fxml"));
+			rootPane.getChildren().setAll(pane);
+		};	
 	
 	   public void BackToLogin(ActionEvent event) throws Exception{
-			((Node)event.getSource()).getScene().getWindow().hide();
-			Stage primaryStage = new Stage();
-				Parent root = FXMLLoader.load(getClass().getResource("/application/SignIn.fxml"));
-				Scene scene = new Scene(root,500,300);
-				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-				scene.setFill(Color.TRANSPARENT);
-				primaryStage.initStyle(StageStyle.TRANSPARENT);
-				primaryStage.setScene(scene);
-				primaryStage.show();}
+		   AnchorPane pane = FXMLLoader.load(getClass().getResource("/application/NewSignIn.fxml"));
+			rootPane.getChildren().setAll(pane);}
 	   
+	   public String getUserID() {
+		   return userID.toString();
+	   }
+	 
 	// Event Listener on Button.onAction
 	@FXML
 	public void CloseApp(ActionEvent event) {

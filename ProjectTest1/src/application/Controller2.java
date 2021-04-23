@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -15,43 +16,24 @@ import javafx.stage.StageStyle;
 public class Controller2 {
 	@FXML
 	private Label display;
+	@FXML
+    private AnchorPane rootPane;
 	
 	public void displayText(String text) {
 		display.setText(text);
 	}
 	
 	public void BackToRe1(ActionEvent event) throws Exception{
-		((Node)event.getSource()).getScene().getWindow().hide();
-		Stage primaryStage = new Stage();
-			Parent root = FXMLLoader.load(getClass().getResource("/application/CreateReminder1.fxml"));
-			Scene scene = new Scene(root,500,300);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			scene.setFill(Color.TRANSPARENT);
-			primaryStage.initStyle(StageStyle.TRANSPARENT);
-			primaryStage.setScene(scene);
-			primaryStage.show();}
+		AnchorPane pane = FXMLLoader.load(getClass().getResource("/application/NewCreateReminder.fxml"));
+		rootPane.getChildren().setAll(pane);}
 	
 	public void BackToRe2(ActionEvent event) throws Exception{
-		((Node)event.getSource()).getScene().getWindow().hide();
-		Stage primaryStage = new Stage();
-			Parent root = FXMLLoader.load(getClass().getResource("/application/CreateReminder2.fxml"));
-			Scene scene = new Scene(root,500,300);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			scene.setFill(Color.TRANSPARENT);
-			primaryStage.initStyle(StageStyle.TRANSPARENT);
-			primaryStage.setScene(scene);
-			primaryStage.show();}
+		AnchorPane pane = FXMLLoader.load(getClass().getResource("/application/NewCreateReminder2.fxml"));
+		rootPane.getChildren().setAll(pane);}
 	
-	public void NextToRe3(ActionEvent event) throws Exception{
-		((Node)event.getSource()).getScene().getWindow().hide();
-		Stage primaryStage = new Stage();
-			Parent root = FXMLLoader.load(getClass().getResource("/application/CreateReminder3.fxml"));
-			Scene scene = new Scene(root,500,300);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			scene.setFill(Color.TRANSPARENT);
-			primaryStage.initStyle(StageStyle.TRANSPARENT);
-			primaryStage.setScene(scene);
-			primaryStage.show();}
+public void BackToMain (ActionEvent event) throws Exception{
+		AnchorPane pane = FXMLLoader.load(getClass().getResource("/application/NewMainPage.fxml"));
+		rootPane.getChildren().setAll(pane);}		
 	
 	public void CloseApp(ActionEvent event) throws Exception{
 		Platform.exit();

@@ -8,8 +8,12 @@
 }
 
 .shape-background1{
-	-fx-shape: "M150 0 L75 200 L225 200 Z";
-	-fx-background-color: pink;
+	-fx-shape: "M 70 90 A 40 50 0 1 1 160 80 A 50
+	 50 0 1 1 250 80 A 50 50 0 1 1 410 90 A 50 50 
+	 0 1 1 470 190 A 50 50 0 1 1 370 200 A 50 50 0 1 1 
+	 270 260 A 50 50 0 1 1 160 220 A 50 50 0 1 1 60 210 
+	 A 50 50 0 1 1 70 90 Z";
+	-fx-background-color: #ffeb99;
 }
 
 .shape-background2{
@@ -30,6 +34,69 @@
 	 A 50 50 0 1 1 70 90 Z";
 	-fx-background-color: #ffb3da;
 
+}
+
+.scroll-pane {
+	-fx-background-color: #997a00;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.scroll-pane > .corner {
+	-fx-background-color: #997a00;
+}
+
+.table-view {
+	-fx-background-color: #997a00;
+}
+
+.table-view .column-header-background {
+	-fx-background-color: white;
+}
+
+.table-view .column-header {
+    -fx-background-color: white;
+}
+
+.table-view .table-cell{
+    -fx-border-color: transparent;
+}
+
+.table-row-cell {
+    -fx-background-color: #ffe066;
+    -fx-font-family: "Berlin Sans FB";
+    -fx-font-size: 14px;
+    -fx-text-align: center;
+}
+.table-row-cell:odd{
+    -fx-background-color: #cca300;
+}
+/* .table-row-cell:even{
+    -fx-background-color: #b3d9ff;
+}*/
+
+.table-row-cell:selected {
+    -fx-font-weight:bold;
+    -fx-background-color: #005797;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+
+.table-view .virtual-flow .scroll-bar:vertical,
+.table-view .virtual-flow .scroll-bar:vertical .track,
+.table-view .virtual-flow .scroll-bar:vertical .track-background,
+.table-view .virtual-flow .scroll-bar:horizontal,
+.table-view .virtual-flow .scroll-bar:horizontal .track,
+.table-view .virtual-flow .scroll-bar:horizontal .track-background {
+    -fx-background-color: #997a00;
+}
+
+
+
+.extraPane {
+	-fx-background-color: #b3d9ff;
 }
 
 .button1{
@@ -67,7 +134,7 @@
 .label-background1{
 	-fx-font-size: 16px;
 	-fx-text-fill: #6d4fb2;
-	-fx-font-family: "Bodoni MT";
+	-fx-font-family: "Bauhaus 93";
 	/*-fx-effect: dropshadow(three-pass-box, white, 10, 0, 0, 0);*/
 	-fx-background-color: white;
 }

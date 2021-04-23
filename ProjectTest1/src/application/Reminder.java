@@ -10,14 +10,21 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.types.ObjectId;
 
 public class Reminder {
-	static String NotifTitle; static String NotifDate; static String NotifLocation; static String NotifComments; static String UserID;
+	static String NotifTitle; static String NotifDate; static String NotifLocation; static String NotifComments; static String UserID; 
+		static String StartTime; static String EndTime; static String Alert; static String Repeat; static String ReminderID;
 	//create notification object
-	public Reminder(String name, String date, String location, String comments, String id) {		
+	public Reminder(String name, String date, String location, String comments, String id, 
+			String start, String end, String alert, String repeat, String reminderID) {		
 		NotifTitle = name;
 		NotifDate = date;
 		NotifLocation = location;
 		NotifComments = comments;
 		UserID = id;
+		StartTime = start;
+		EndTime = end;
+		Alert = alert;
+		Repeat = repeat;
+		ReminderID = reminderID;
 		}
 	
 	public static void main() {
@@ -28,17 +35,18 @@ public class Reminder {
 		MongoClient mongoClient = new MongoClient(uri);
 		MongoDatabase database = mongoClient.getDatabase("Notified");
 		
-		// create a collection
-		//database.createCollection("Notifications");
-		
 		// create document
 		Document document = new Document();
-		//Reminder myReminder = new Reminder(NotifTitle, NotifDate, NotifLocation, NotifComments);
 		document.append("UserID", UserID);
+		document.append("ReminderID", ReminderID);
 		document.append("EventName", NotifTitle);
 		document.append("Date", NotifDate);
 		document.append("Location", NotifLocation);
 		document.append("Comments", NotifComments);
+		document.append("StartTime", StartTime);
+		document.append("EndTime", EndTime);
+		document.append("Alert", Alert);
+		document.append("Repeat", Repeat);
 		
 		//insert document into collection
 		Document found = database.getCollection("Notifications").find(document).first();
